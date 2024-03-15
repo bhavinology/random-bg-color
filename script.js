@@ -7,11 +7,19 @@ function randomColor() {
   return color;
 }
 
+let intervalId;
 function changecolor() {
-  setInterval(() => {
+  intervalId = setInterval(() => {
     document.body.style.background = randomColor(); // write a function which gives random hex color code
   }, 1000);
 }
 
+function stopChangingColor() {
+  clearInterval(intervalId);
+}
+
 const startBtn = document.querySelector("#start");
 startBtn.addEventListener("click", changecolor);
+
+const stopBtn = document.querySelector("#stop");
+stopBtn.addEventListener("click", stopChangingColor);
